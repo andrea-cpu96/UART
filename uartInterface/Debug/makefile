@@ -59,8 +59,8 @@ all: main-build
 main-build: uartInterface.elf secondary-outputs
 
 # Tool invocations
-uartInterface.elf uartInterface.map: $(OBJS) $(USER_OBJS) D:\Andrea\Embedded\stm32\stm32f446re\Dev\WorkSpace\uartInterface\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "uartInterface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Andrea\Embedded\stm32\stm32f446re\Dev\WorkSpace\uartInterface\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uartInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+uartInterface.elf uartInterface.map: $(OBJS) $(USER_OBJS) D:\Andrea\Embedded\stm32\stm32f446re\Dev\WorkSpace\UART\uartInterface\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "uartInterface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Andrea\Embedded\stm32\stm32f446re\Dev\WorkSpace\UART\uartInterface\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uartInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

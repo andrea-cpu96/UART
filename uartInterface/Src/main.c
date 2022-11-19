@@ -83,6 +83,9 @@ int main(void)
 
 				i++;
 
+				if(i >= 100)
+					i = 0;
+
 			}while(c != '\r'); // Check for the end
 
 
