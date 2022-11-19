@@ -1,0 +1,5 @@
+../Src/uart.c:16:6:uart_Init	16	static
+../Src/uart.c:69:6:uart_MultiByte_Tx	24	static
+../Src/uart.c:77:6:uart_SingleByte_Tx	16	static
+../Src/uart.c:91:6:uart_MultiByte_Rx	24	static
+../Src/uart.c:99:6:uart_SingleByte_Rx	16	static
