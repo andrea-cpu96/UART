@@ -80,6 +80,10 @@ void uart_MultiByte_Tx(uartHandler_t *huart, uint8_t *dataBuff, uint8_t length)
 void uart_SingleByte_Tx(uartHandler_t *huart, uint8_t data)
 {
 
+	// Wait TXE
+
+	while(! ( huart->uart_Istance->uart_sr & ( 1 << 7  ) ) );
+
 	// Write the data into the data register
 
 	huart->uart_Istance->uart_dr  = data;

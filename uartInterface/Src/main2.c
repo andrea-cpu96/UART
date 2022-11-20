@@ -45,6 +45,8 @@ int main(void)
 
 	char *dataBuffTx = "Write something:\n\r";
 
+	char newLine[3] = {'\n', '\r'};
+
 	// System configurations
 	System_Config();
 
@@ -87,14 +89,18 @@ int main(void)
 			}while(c != '\r'); // Check for the end
 
 
+			// Small delay between uart tx command
+			delayTimeStamp = Get_SystemTimeMs();
+			while(Compare_SystemTimeMs(delayTimeStamp) < 10);
+
 			// Send a new line character
 
-			uart_SingleByte_Tx(&huart2, '\n');
-			uart_SingleByte_Tx(&huart2, '\r');
+			uart_Start_Tx_It(&huart2, (uint8_t *)newLine, 2);
 
 			// Wait 5 seconds
 
 			delayTimeStamp = Get_SystemTimeMs();
+
 		}
 
 	}
