@@ -1,2 +1,0 @@
-../Src/main.c:35:5:main	128	static
-../Src/main.c:109:6:SysTick_CallBack	4	static

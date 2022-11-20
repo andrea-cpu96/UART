@@ -6,7 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/int.c \
-../Src/main.c \
+../Src/main2.c \
 ../Src/ports.c \
 ../Src/projectconf.c \
 ../Src/syscalls.c \
@@ -16,7 +16,7 @@ C_SRCS += \
 
 OBJS += \
 ./Src/int.o \
-./Src/main.o \
+./Src/main2.o \
 ./Src/ports.o \
 ./Src/projectconf.o \
 ./Src/syscalls.o \
@@ -26,7 +26,7 @@ OBJS += \
 
 C_DEPS += \
 ./Src/int.d \
-./Src/main.d \
+./Src/main2.d \
 ./Src/ports.d \
 ./Src/projectconf.d \
 ./Src/syscalls.d \
@@ -42,7 +42,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/int.d ./Src/int.o ./Src/int.su ./Src/main.d ./Src/main.o ./Src/main.su ./Src/ports.d ./Src/ports.o ./Src/ports.su ./Src/projectconf.d ./Src/projectconf.o ./Src/projectconf.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/systemfunctions.d ./Src/systemfunctions.o ./Src/systemfunctions.su ./Src/uart.d ./Src/uart.o ./Src/uart.su
+	-$(RM) ./Src/int.d ./Src/int.o ./Src/int.su ./Src/main2.d ./Src/main2.o ./Src/main2.su ./Src/ports.d ./Src/ports.o ./Src/ports.su ./Src/projectconf.d ./Src/projectconf.o ./Src/projectconf.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/systemfunctions.d ./Src/systemfunctions.o ./Src/systemfunctions.su ./Src/uart.d ./Src/uart.o ./Src/uart.su
 
 .PHONY: clean-Src
 

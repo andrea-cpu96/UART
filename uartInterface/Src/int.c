@@ -5,9 +5,8 @@
  *      Author: andre
  */
 
-#include <stdint.h>
-
 #include "int.h"
+#include "main.h"
 
 void HardFault_Handler()
 {
@@ -26,5 +25,13 @@ void SysTick_Handler(void)
 {
 
 	SysTick_CallBack();
+
+}
+
+
+void USART2_IRQHandler(void)
+{
+
+	Uart_IRQHandler(&huart2);
 
 }

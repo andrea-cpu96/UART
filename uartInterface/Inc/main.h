@@ -8,9 +8,14 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#define ONE_SECOND_DELAY			( 100000 )
-#define AM2302_READ_PERIOD			( ONE_SECOND_DELAY * 3 ) // 3s
-#define AM2302_HUMI_START_INDEX		( 39 )
-#define AM2302_TEMP_START_INDEX		( 23 )
+#include <stdint.h>
+
+#include "projectconf.h"
+#include "systemfunctions.h"
+#include "ports.h"
+
+#include "uart.h"
+
+extern uartHandler_t huart2;
 
 #endif /* MAIN_H_ */

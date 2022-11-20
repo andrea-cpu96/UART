@@ -1,5 +1,5 @@
 "./Src/int.o"
-"./Src/main.o"
+"./Src/main2.o"
 "./Src/ports.o"
 "./Src/projectconf.o"
 "./Src/syscalls.o"

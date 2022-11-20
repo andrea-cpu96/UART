@@ -1,3 +1,11 @@
+/*
+ * main2.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: andre
+ */
+
+
 /**
  ******************************************************************************
  * @file           : main.c
@@ -25,6 +33,9 @@
 
 uartHandler_t huart2;
 
+uint8_t dataReceived = 0;
+
+
 int main(void)
 {
 
@@ -33,18 +44,12 @@ int main(void)
 	uint32_t delayTimeStamp = Get_SystemTimeMs();
 
 	char *dataBuffTx = "Write something:\n\r";
-	char dataBuffRx[100] = {0};
 
 	// System configurations
 	System_Config();
 
 	// Uart configuration
-	uart_Init(&huart2);
-
-	// Start in new line
-
-	uart_SingleByte_Tx(&huart2, '\n');
-	uart_SingleByte_Tx(&huart2, '\r');
+	uart_Init_It(&huart2);
 
 	while(1)
 	{
@@ -54,11 +59,10 @@ int main(void)
 
 			// Write something
 
-			uart_MultiByte_Tx(&huart2, (uint8_t *)dataBuffTx, 18);
+			uart_Start_Tx_It(&huart2, (uint8_t *)dataBuffTx, 18);
 
 			// Wait a response
 
-			int i = 0;
 			uint8_t c = 0;
 
 			do
@@ -66,20 +70,19 @@ int main(void)
 
 				// Read byte by byte what the user write
 
-				uart_SingleByte_Rx(&huart2, &c);
+				uart_Start_Rx_It(&huart2, &c, 1);
 
-				dataBuffRx[i] = c;
+				// Wait data received
+
+				while(!dataReceived);
+
+				dataReceived = 0;
 
 				// Echo byte by byte back
 
-				uart_SingleByte_Tx(&huart2, (uint8_t)c);
+				uart_Start_Tx_It(&huart2, &c, 1);
 
 				// Increment index
-
-				i++;
-
-				if(i >= 100)
-					i = 0;
 
 			}while(c != '\r'); // Check for the end
 
@@ -92,7 +95,6 @@ int main(void)
 			// Wait 5 seconds
 
 			delayTimeStamp = Get_SystemTimeMs();
-
 		}
 
 	}
@@ -111,6 +113,14 @@ void SysTick_CallBack(void)
 void USART_ApplicationEventCallback(uartHandler_t *huart, uint8_t event)
 {
 
+	if(event == USART_EVENT_RX_CMPLT)
+	{
+
+		// Reception complete
+
+		dataReceived = 1;
+
+	}
 
 }
 
